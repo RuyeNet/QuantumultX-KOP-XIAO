@@ -126,7 +126,7 @@ const Base64 = new Base64Code();
 const escapeRegExp = str => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); //处理特殊符号以便正则匹配使用
 var link1 = link0.split("#")[0]
 const qxpng = "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png" // server sub-info link
-const subinfo_link = { "open-url": "https://t.me/QuanX_API", "media-url": "https://shrtm.nu/ebAr" };
+const subinfo_link = { "open-url": "https://t.me/QuanX_API", "media-url": "" };
 const subinfo_link1 = { "open-url": link1, "media-url": "https://shrtm.nu/uo13" } // server sub-info link(fake-nodes)
 const rwrite_link = { "open-url": link1, "media-url": "https://shrtm.nu/x3o2" } // rewrite filter link
 const rwhost_link = { "open-url": link1, "media-url": "https://shrtm.nu/0n5J" } // hostname filter link
@@ -492,7 +492,10 @@ function SubFlow() {
       var year = epr.getFullYear();  // 获取完整的年份(4位,1970)
       var mth = epr.getMonth() + 1 < 10 ? '0' + (epr.getMonth() + 1) : (epr.getMonth() + 1);  // 获取月份(0-11,0代表1月,用的时候记得加上1)
       var day = epr.getDate() < 10 ? "0" + (epr.getDate()) : epr.getDate();
-      epr = "过期时间: " + year + "-" + mth + "-" + day
+      var hour = epr.getHours() < 10 ? "0" + (epr.getHours()) : epr.getHours();
+      var minute = epr.getMinutes() < 10 ? "0" + (epr.getMinutes()) : epr.getMinutes();
+      var second = epr.getSeconds() < 10 ? "0" + (epr.getSeconds()) : epr.getSeconds();
+      epr = "过期时间: " + year + "-" + mth + "-" + day + " " + hour + ":" + minute + ":" + second
     } else {
       epr = ""; //"过期时间: ✈️ 未提供該信息" //没过期时间的显示订阅链接
     }
